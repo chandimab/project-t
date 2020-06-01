@@ -1,0 +1,17 @@
+<script src="peerjs.min.js"></script>
+
+<script>
+  var peer = new Peer("sausecode-id-destination0");
+
+  peer.on("connection", function (conn) {
+    conn.on("open", function () {
+      // Receive messages
+      conn.on("data", function (data) {
+        console.log("Received", data);
+      });
+
+      // Send messages
+      conn.send("Hello!");
+    });
+  });
+</script>
